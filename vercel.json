@@ -1,5 +1,6 @@
 {
-  "rewrites": [
-    { "source": "/", "destination": "/screener.html" }
+  "routes": [
+    { "src": "/$", "dest": "/screener.html" },
+    { "handle": "filesystem" }
   ]
 }
