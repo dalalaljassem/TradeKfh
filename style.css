@@ -192,6 +192,10 @@ ul { padding: 0; list-style: none; }
   overflow: hidden;
 }
 
+.text-center{
+  display: flex;
+  justify-content: center;
+}
 
 /* Dark mode (default): show the white badge */
 .for-light { display: none; }

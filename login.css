@@ -1,0 +1,140 @@
+/* ==========================================================
+   Login portal — dark, matches the brochure.
+   Load AFTER style.css (it reuses its tokens and .btn).
+   Uses logical properties: works for dir="rtl" and dir="ltr".
+   ========================================================== */
+.login-page { min-height: 100vh; min-height: 100svh; background: #0b0b0b; color: #fff; }
+.login-page :focus-visible { outline-color: #fff; }
+.login-page .btn-white { background: #fff; color: #0b0b0b; }
+.login-page .btn-white:hover { background: #e4e4e4; }
+
+.lg { --dir: to right; display: grid; min-height: 100vh; min-height: 100svh; }
+[dir="rtl"] .lg { --dir: to left; }
+@media (min-width: 960px) {
+  .lg { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); }
+}
+
+/* ---------- Form side ---------- */
+.lg-panel { display: flex; flex-direction: column; padding: clamp(1.25rem, 3vw, 2rem) var(--gutter); }
+.lg-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.lg-logo img { height: 34px; width: auto; filter: brightness(0) invert(1); }
+.lg-top-actions { display: flex; align-items: center; gap: 0.5rem; }
+.lg-lang { padding: 0.5rem 0.8rem; border-radius: 999px; color: #fff; font-weight: 600; text-decoration: none; }
+.lg-lang:hover { background: rgba(255, 255, 255, 0.12); }
+.lg-top .btn { padding: 0.6rem 1.25rem; }
+
+.lg-main { flex: 1; display: grid; place-items: center; padding-block: 2.5rem; }
+.lg-card { width: min(100%, 440px); }
+.lg-card h1 { font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1.2; font-weight: 700; }
+.lg-card .lead { margin-block: 0.75rem 2rem; color: #a3a3a3; }
+
+.field + .field { margin-block-start: 1rem; }
+.field label { display: block; margin-block-end: 0.4rem; color: #d4d4d4; font-size: 0.95rem; font-weight: 500; }
+.input { position: relative; display: flex; align-items: center; }
+.input > svg { position: absolute; inset-inline-start: 1rem; color: #8a8a8a; pointer-events: none; }
+.input input {
+  width: 100%;
+  height: 56px;
+  padding-inline: 2.9rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 14px;
+  background: #161616;
+  color: #fff;
+  font: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.input input:focus { outline: 0; border-color: #fff; box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2); }
+.input input:-webkit-autofill {
+  -webkit-text-fill-color: #fff;
+  box-shadow: 0 0 0 1000px #161616 inset;
+  caret-color: #fff;
+}
+.input.has-reveal input { padding-inline-end: 3.3rem; }
+.reveal {
+  position: absolute;
+  inset-inline-end: 0.5rem;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #a3a3a3;
+  cursor: pointer;
+}
+.reveal:hover, .reveal[aria-pressed="true"] { color: #fff; background: rgba(255, 255, 255, 0.08); }
+
+.lg-row {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 0.75rem 1rem; margin-block: 1.25rem 1.5rem; font-size: 0.95rem;
+}
+.lg-row a { color: #d4d4d4; text-decoration: underline; text-underline-offset: 3px; }
+.lg-row a:hover { color: #fff; }
+
+.switch { display: inline-flex; align-items: center; gap: 0.6rem; color: #d4d4d4; cursor: pointer; }
+.switch input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.switch .track { position: relative; width: 44px; height: 26px; border-radius: 999px; background: #333; transition: background-color 0.2s; }
+.switch .track::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 3px;
+  inset-inline-start: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s, background-color 0.2s;
+}
+.switch input:checked + .track { background: #fff; }
+.switch input:checked + .track::after { transform: translateX(18px); background: #0b0b0b; }
+[dir="rtl"] .switch input:checked + .track::after { transform: translateX(-18px); }
+.switch input:focus-visible + .track { outline: 3px solid #fff; outline-offset: 3px; }
+
+.lg-submit { width: 100%; height: 56px; font-size: 1.05rem; }
+.demo-note { margin-block-start: 1rem; color: #8a8a8a; font-size: 0.85rem; }
+.lg-alt { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; margin-block-start: 1.5rem; color: #a3a3a3; }
+.lg-alt a { color: #fff; font-weight: 600; text-decoration: none; }
+.lg-alt a:hover { text-decoration: underline; }
+.lg-foot { color: #8a8a8a; font-size: 0.85rem; }
+
+/* ---------- Photo side ---------- */
+.lg-side {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: grid; align-content: end;
+  min-height: 420px; padding: clamp(1rem, 3vw, 2rem);
+}
+.lg-photo { position: absolute; inset: 0; z-index: -2; }
+.lg-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 56% 30%; }
+[dir="rtl"] .lg-photo img { transform: scaleX(-1); }   /* keeps the dark side next to the form */
+.lg-side::before {
+  content: "";
+  position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(var(--dir), #0b0b0b 0%, rgba(11, 11, 11, 0.35) 22%, rgba(11, 11, 11, 0) 50%),
+    linear-gradient(to top, rgba(11, 11, 11, 0.9) 0%, rgba(11, 11, 11, 0.4) 40%, rgba(11, 11, 11, 0) 70%);
+}
+@media (max-width: 959px) {
+  .lg-side { min-height: 0; padding-block-start: 12rem; }
+  .lg-side::before {
+    background: linear-gradient(to top, rgba(11, 11, 11, 0.92) 0%, rgba(11, 11, 11, 0.5) 55%, rgba(11, 11, 11, 0.15) 100%);
+  }
+}
+
+.lg-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; }
+.glass {
+  padding: 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-md);
+  background: rgba(11, 11, 11, 0.55);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+.glass h2 { margin-block-end: 0.9rem; font-size: 1rem; font-weight: 600; }
+.glass ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+.glass a { color: #d4d4d4; text-decoration: none; }
+.glass a:hover { color: #fff; }
+.lg-phone { display: inline-block; color: #fff !important; font-size: 1.9rem; font-weight: 700; line-height: 1.15; direction: ltr; unicode-bidi: isolate; }
+.lg-email { display: inline-block; margin-block-start: 0.4rem; direction: ltr; unicode-bidi: isolate; }
+.lg-stores { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-block-start: 1.1rem; }
+.lg-stores img { height: 40px; width: auto; }

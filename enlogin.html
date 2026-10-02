@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Log in | KFH Trade</title>
+  <meta name="theme-color" content="#0b0b0b">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="login.css">
+</head>
+
+<body class="login-page">
+
+  <div class="">
+
+    <!-- Form side -->
+    <div class="lg-panel">
+      <header class="lg-top">
+        <a class="lg-logo" href="enindex.html">
+          <img src="https://www.kfhtrade.com/Frontend/kfh_trade/images/logo.svg" alt="KFH Trade">
+        </a>
+        <div class="lg-top-actions">
+          <a class="lg-lang" href="login.html" hreflang="ar" lang="ar">عربي</a>
+        </div>
+      </header>
+
+      <main class="lg-main">
+        <div class="">
+          <h1>Log in to your account</h1>
+          <p class="lead">Log in to follow the markets and open the screener.</p>
+
+          <!-- Prototype login: the inputs have no name attribute, so nothing you type is ever sent anywhere.
+               Submitting simply opens the screener. Replace with a real sign-in when it exists. -->
+          <form action="screener.html" method="get">
+            <div class="field">
+              <label for="u">Username</label>
+              <div class="input">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="8" r="4" />
+                  <path d="M4 21c0-4 4-6 8-6s8 2 8 6" />
+                </svg>
+                <input id="u" type="text" autocomplete="username" required>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="p">Password</label>
+              <div class="input has-reveal">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="5" y="11" width="14" height="10" rx="2" />
+                  <path d="M8 11V8a4 4 0 018 0v3" />
+                </svg>
+                <input id="p" type="password" autocomplete="current-password" required>
+                <button class="reveal" id="reveal" type="button" aria-pressed="false" aria-label="Show password"
+                  data-show="Show password" data-hide="Hide password">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="lg-row">
+              <label class="switch">
+                <input type="checkbox" role="switch">
+                <span class="track" aria-hidden="true"></span>
+                <span>Remember me</span>
+              </label>
+              <a href="https://trading.kfhtrade.com/">Forgot your password?</a>
+            </div>
+
+            <button class="btn btn-white lg-submit" type="submit">Log in</button>
+          </form>
+
+          <p class="demo-note">Demo: any username and password opens the screener.</p>
+
+          <p class="lg-alt">
+            <span>New to KFH Trade?</span>
+            <a href="https://www.kfhtrade.com/en/Account-Opening">Open an account</a>
+            <a href="https://www.kfhtrade.com/en/FAQ">FAQ</a>
+          </p>
+        </div>
+      </main>
+      <div class="text-center">
+        <footer class="lg-foot">Copyright ©2026 KFH Capital Investment Company. All rights reserved.</footer>
+      </div>
+
+    </div>
+
+
+  </div>
+
+  <script>
+    /* Show / hide password */
+    (function () {
+      var btn = document.getElementById('reveal'), input = document.getElementById('p');
+      btn.addEventListener('click', function () {
+        var show = input.type === 'password';
+        input.type = show ? 'text' : 'password';
+        btn.setAttribute('aria-pressed', String(show));
+        btn.setAttribute('aria-label', show ? btn.dataset.hide : btn.dataset.show);
+      });
+    })();
+  </script>
+</body>
+
+</html>
